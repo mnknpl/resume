@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manop K. — Pixel CV / Portfolio</title>
+  <meta name="description" content="Founder & CEO of Osaka Bicycle since 2011, underwater photography enthusiast, and Developer at Cupster.Club." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0e13;
+      --panel: #151b24;
+      --ink: #e6f1ff;
+      --muted: #9bb3d1;
+      --accent: #49e3a5;   
+      --accent-2: #ff5ba5; 
+      --link: #7fd1ff;    
+      --border: #0d0f14;
+    }
+    *{ box-sizing: border-box }
+    html,body{ height:100% }
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 800px at 10% -20%, #111827 0%, transparent 60%),
+        radial-gradient(1400px 900px at 120% 10%, #0e1420 0%, transparent 40%),
+        var(--bg);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      line-height:1.6;
+    }
+
+    body:before{
+      content:""; position:fixed; inset:0; pointer-events:none; opacity:.08;
+      background: repeating-linear-gradient(
+        to bottom, rgba(255,255,255,.08), rgba(255,255,255,.08) 1px,
+        transparent 1px, transparent 3px
+      );
+      mix-blend-mode: overlay;
+    }
+
+    .wrap{ max-width:1100px; margin:0 auto; padding:24px; }
+
+    .pixel-card{
+      position:relative;
+      background:var(--panel);
+      padding:24px;
+      margin:18px 0;
+      border:4px solid #000;
+      box-shadow:
+        0 0 0 2px var(--border) inset,
+        0 12px 0 0 #000,
+        0 12px 0 2px var(--border);
+      border-radius:8px;
+    }
+
+    .pixel-card h1, .pixel-card h2, .pixel-card h3{
+      font-family: "Press Start 2P", cursive;
+      letter-spacing: .5px;
+      line-height:1.35;
+      margin:0 0 16px 0;
+      text-shadow: 0 2px 0 #000;
+    }
+
+    .tag{ font-family: "Press Start 2P"; font-size:12px; padding:6px 10px; border:3px solid #000; background:var(--accent); color:#001b12; box-shadow: 0 4px 0 #000; border-radius:6px }
+    .tag.alt{ background:var(--accent-2); color:#19000b }
+
+    .hero{
+      display:grid; gap:16px; align-items:start;
+      grid-template-columns: 120px 1fr; 
+    }
+    .avatar{
+      width:100px; height:100px; image-rendering: pixelated; border:4px solid #000; border-radius:12px; background:#0a0f16; display:grid; place-items:center; font-family:"Press Start 2P";
+      box-shadow: 0 6px 0 #000, 0 6px 0 2px var(--border);
+    }
+    .avatar span{ font-size:10px; color:var(--muted); text-align:center; padding:8px }
+
+    .name{ font-size:28px }
+    .subtitle{ color:var(--muted); margin-top:8px }
+
+    .nav{
+      margin-top:10px; display:flex; flex-wrap:wrap; gap:10px
+    }
+    .btn{
+      font-family: "Press Start 2P"; font-size:12px; text-decoration:none;
+      color:#001b12; background:var(--accent); padding:10px 12px; border:3px solid #000; border-radius:8px;
+      box-shadow: 0 4px 0 #000; display:inline-block
+    }
+    .btn:hover{ transform: translateY(1px) }
+    .btn:active{ box-shadow: 0 2px 0 #000; transform: translateY(2px) }
+    .btn.outline{ background:transparent; color:var(--ink) }
+
+    .cols{ display:grid; grid-template-columns: 1fr 1fr; gap:18px }
+    @media (max-width:880px){
+      .hero{ grid-template-columns: 1fr; }
+      .cols{ grid-template-columns: 1fr }
+    }
+
+    ul.pixel{
+      list-style:none; padding-left:0; margin:0; display:grid; gap:10px
+    }
+    ul.pixel li{ position:relative; padding-left:26px }
+    ul.pixel li:before{
+      content:""; position:absolute; left:0; top:.45em; width:14px; height:14px; background:var(--accent);
+      border:3px solid #000; border-radius:4px; box-shadow: 0 2px 0 #000;
+    }
+
+    .gallery{ display:grid; gap:12px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    .shot{ position:relative; border:4px solid #000; border-radius:10px; overflow:hidden; background:#0a0f16; box-shadow: 0 6px 0 #000, 0 6px 0 2px var(--border); }
+    .shot img{ width:100%; height:180px; object-fit:cover; display:block; }
+    .shot figcaption{ position:absolute; inset:auto 0 0 0; background: linear-gradient(transparent, rgba(0,0,0,.8)); padding:10px; font-size:12px; color:#cfe6ff }
+
+    .stack{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px }
+    .chip{ font-family: "Press Start 2P"; font-size:10px; padding:6px 8px; border:3px solid #000; background:#1d2633; color:#cbe7ff; border-radius:8px; }
+
+    footer{ text-align:center; color:var(--muted); margin:26px 0 }
+    a{ color:var(--link) }
+
+    @media print{
+      body:before{ display:none }
+      .btn, .nav{ display:none }
+      .pixel-card{ box-shadow:none; border:1px solid #333 }
+      .shot img{ height:140px }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="pixel-card hero" id="top">
+      <div class="avatar" aria-hidden="true"><span>Hello<br>Manop K</span></div>
+      <div>
+        <h1 class="name">Manop K.</h1>
+        <p class="subtitle">Founder & CEO of <strong>Osaka Bicycle</strong> (since 2011) · Underwater Photography · Cupster.Club Deverloper</p>
+        <div class="nav">
+          <a class="btn" href="#about">About</a>
+          <a class="btn" href="#bicycle">Osaka Bicycle</a>
+          <a class="btn" href="#gallery">Underwater Gallery</a>
+          <a class="btn" href="#project">Cupster.club Project</a>
+          <a class="btn outline" href="#contact">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="pixel-card" id="about">
+      <h2>About Me</h2>
+      <div class="cols">
+        <div>
+          <p>Hi! I’m <strong>Manop</strong>, a builder and explorer. I founded Osaka Bicycle in 2011, and when I’m off the road I’m underwater—capturing marine life through my lens. Recently, I’ve been crafting a <em>Cupster.Club</em> that celebrates cafés, beans, and brewing craft.</p>
+          <ul class="pixel">
+            <li>13+ years of entrepreneurship (<em>bikes & brand</em>)</li>
+            <li>Passion for macro & ambient-light underwater shots</li>
+            <li>projects with Next.js, React, React Native, Javascript, TypeScript, Supabase, Cloudflare, Firebase, AWS, Google Cloud</li>
+          </ul>
+        </div>
+        <div>
+          <p><span class="tag">CITY</span> <span class="tag alt">BANGKOK, TH</span></p>
+          <p><strong>Focus</strong>: product, brand systems, UX/UI, performance, and delightful details✨.</p>
+          <p><strong>Interests</strong>: cycling adventures, reef ecosystems, single-origin espresso, and game‑like UI.</p>
+        </div>
+      </div>
+    </section>
+    <section class="pixel-card" id="bicycle">
+      <h2>Founder & CEO — Osaka Bicycle (2011 → Present)</h2>
+      <p>Built and led <strong>Osaka Bicycle</strong> from the ground up, focusing on rider-first design, durable frames, and a tight-knit community. Oversaw product strategy, supplier relations, launches, and brand storytelling across channels.</p>
+      <ul class="pixel">
+        <li>Designed & shipped multiple frame sets (Folding / MTB / City)</li>
+        <li>Scaled D2C storefront and community demo rides at my office</li>
+      </ul>
+      <div class="stack" aria-label="stack">
+        <span class="chip">Brand</span>
+        <span class="chip">Product</span>
+        <span class="chip">eCommerce</span>
+        <span class="chip">Ops</span>
+        <span class="chip">Community</span>
+      </div>
+        <p style="margin-top:14px">
+        <a class="btn" href="https://www.osakabicycle.com" target="_blank">Visit Osaka Bicycle</a>
+      </p>
+    </section>
+    <section class="pixel-card" id="gallery">
+      <h2>Underwater Gallery</h2>
+      <div class="gallery">
+        <figure class="shot">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/manopk-res/54720560043/" title="P3290060 (1)"><img src="https://live.staticflickr.com/65535/54720560043_28f6cdb683_b.jpg" width="1024" height="768" alt="P3290060 (1)"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+        </figure>
+        <figure class="shot">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/manopk-res/54720568829/in/dateposted-public/" title="P5310215 (2)"><img src="https://live.staticflickr.com/65535/54720568829_8ca17ab061_b.jpg" width="1024" height="768" alt="P5310215 (2)"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>        </figure>
+        <figure class="shot">
+        <a data-flickr-embed="true" href="https://www.flickr.com/photos/manopk-res/54719516592/in/dateposted-public/" title="P7120626 (6)"><img src="https://live.staticflickr.com/65535/54719516592_0a66c8100a_b.jpg" width="1024" height="768" alt="P7120626 (6)"/></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>        </figure>
+      </div>
+            <p style="margin-top:14px">
+        <a class="btn" href="https://www.flickr.com/photos/manopk-res" target="_blank">Flickr</a>
+      </p>
+    </section>
+
+    <section class="pixel-card" id="project">
+      <h2>Project — Coffee Review Website</h2>
+      <p>Exploring cafés and beans across Thailand with a community-driven review site. Focused on fast load times, great maps, and simple tools for owners.</p>
+      <ul class="pixel">
+        <li>Search & filter by city, beans, brew methods, and ratings</li>
+        <li>Owner dashboards for menus, photos, and announcements</li>
+        <li>Blog Posts and Specialty Coffee Community Building</li>
+      </ul>
+      <div class="stack">
+        <span class="chip">Next.js</span>
+        <span class="chip">TypeScript</span>
+        <span class="chip">Supabase</span>
+        <span class="chip">Cloudflare</span>
+        <span class="chip">Zustand</span>
+      </div>
+      <p style="margin-top:14px">
+        <a class="btn" href="https://www.cupster.club" target="_blank">Visit Project</a>
+      </p>
+    </section>
+
+    <section class="pixel-card" id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:hello@example.com">ride@mcycling.bike</a></p>
+      <p>Instagram: <a href="#" onclick="return false">@seafile.club</a> · GitHub: <a href="#" onclick="return false">github.com/mnknpl</a></p>
+      <p><a class="btn" href="#top">Back to Top ↑</a></p>
+    </section>
+
+    <footer>
+      © <script>document.write(new Date().getFullYear())</script> Manop K. · Built with love for bikes, Scuba Diving & Coffee brews.
+    </footer>
+  </main>
+</body>
+</html>
